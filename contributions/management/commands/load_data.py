@@ -109,6 +109,7 @@ class Command(BaseCommand):
         data_file = open(os.path.join(data_path, 'candidate_contribs.csv'), 'rU')
         rdr = csv.DictReader(data_file)
         for i in rdr:
+            #print "loading %r" % i
             cand = i.get('candidate', '').strip().lower()
             if cand in ['garcetti', 'greuel']:
                 
