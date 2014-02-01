@@ -2,6 +2,13 @@ h1. bruin-training
 
 A simple training app for Daily Bruin trainees, using campaign contribution data from the 2012 L.A. Mayoral race.
 
+h2. TODO:
+
+[ ] client-side data toggling w/ angular
+    * filter: zip code, sector
+    * sort:   amount
+[ ] use zip code data to show clusters
+
 h2. Initial setup:
 
 Set up a sandbox for your codebase using virtualenv.
