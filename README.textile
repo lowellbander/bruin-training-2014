@@ -41,6 +41,8 @@ Then set up the test database
 
 h2. Starting up the Django project
 
+The below can be done with <pre><code>sh load.sh</code></pre>
+
 Sync the database, and run our script to load in the data.
 
 <pre><code>$ python manage.py syncdb</code></pre>
@@ -53,4 +55,4 @@ Turn on the test server, and see what you have!
 
 <pre><code>$ python manage.py runserver</code></pre>
 
-Go to "http://localhost:8000/":http://localhost:8000/
+Go to "http://localhost:8082/":http://localhost:8082/
