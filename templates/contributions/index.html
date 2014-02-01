@@ -51,20 +51,20 @@
         .attr("height", diameter)
         .attr("class", "bubble");
 
-    // var root = {{ root|safe }}
+    var root = {{ root|safe }}
     // var root = {'name': 'root', 'children': [{'name': 'BLANK', 'size': 12}]}
     // console.log({{ root|safe }})
     // var root = {'name': 'root', 'children': [{'name': 'Los Angeles', 'size': 300}]}
     // var root = {"name": "root","children": [{"name": "Los Angeles", "size": 300}]}
 
-    var root = {
-        "name": "root",
-        "children": [
-            {"name": "red", "size": 2000},
-            {"name": "blue", "size": 3000},
-            {"name": "green", "size": 1000},
-        ]
-    }
+    // var root = {
+    //     "name": "root",
+    //     "children": [
+    //         {"name": "red", "size": 2000},
+    //         {"name": "blue", "size": 3000},
+    //         {"name": "green", "size": 1000},
+    //     ]
+    // }
     
     var node = svg.selectAll(".node")
           .data(bubble.nodes(classes(root))

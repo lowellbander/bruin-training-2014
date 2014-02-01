@@ -40,7 +40,7 @@ class IndexView(TemplateView):
 
         cities = []
         for contrib in Contribution.objects.all():
-            cities.append(str(contrib.city))
+            cities.append(str(contrib.city).lower())
         citydict = Counter(cities)
         # print type(citydict)
 
@@ -56,7 +56,7 @@ class IndexView(TemplateView):
         #     print i
         #     print citydict[i]
 
-        i = 0
+        # i = 0
         for key in citydict:
             newdict = {}
             if key == '':
@@ -65,9 +65,9 @@ class IndexView(TemplateView):
                 newdict["name"] = key
             newdict["size"] = citydict[key]
             root["children"].append(newdict)
-            i += 1
-            if i is 1:
-                break
+            # i += 1
+            # if i is 1:
+            #     break
 
         # print root
         
