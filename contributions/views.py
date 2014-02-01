@@ -1,4 +1,5 @@
 import json
+from collections import Counter
 from django.db.models import Sum, Count
 from django.views.generic import TemplateView
 from contributions.models import Contribution
@@ -34,7 +35,57 @@ class IndexView(TemplateView):
         # If 'super' is confusing, the docs are here:
         # http://docs.python.org/2/library/functions.html#super
         context = super(IndexView, self).get_context_data(**kwargs)
+
+        ##
+
+        cities = []
+        for contrib in Contribution.objects.all():
+            cities.append(str(contrib.city))
+        citydict = Counter(cities)
+        # print type(citydict)
+
+        # print citydict
+        # TODO: convert each key,value pair to:  {"name": "AgglomerativeCluster", "size": 3938},
         
+        root = {
+            "name": "root",
+            "children": []
+        }
+
+        # for i in citydict:
+        #     print i
+        #     print citydict[i]
+
+        i = 0
+        for key in citydict:
+            newdict = {}
+            if key == '':
+                newdict["name"] = "BLANK"
+            else:
+                newdict["name"] = key
+            newdict["size"] = citydict[key]
+            root["children"].append(newdict)
+            i += 1
+            if i is 1:
+                break
+
+        # print root
+        
+        # stop = 0
+        # for contrib in Contribution.objects.all():
+            # child = {
+            #     "name": str(contrib.city),
+            #     "size": 300
+            # }
+            # root["children"].append(child)
+            # stop += 1
+            # if stop == 50:
+            #     break
+        context['root'] = root
+        # print root
+
+        ##
+
         # First, let's get the contributions for each candidate
         # For more on Django querysets, head here:
         # https://docs.djangoproject.com/en/1.6/ref/models/querysets/
@@ -68,7 +119,7 @@ class IndexView(TemplateView):
         # Let's also grab the contributions by sector
         sectors = set(Contribution.objects.all().values_list('sector', flat=True))
         # You can print out variables to help debug. Check your console...
-        print sectors
+        # print sectors
 
         # We're going to generate some lists with everything in them now,
         # then refine the data in our loop below, to save multiple
