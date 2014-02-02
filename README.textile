@@ -2,6 +2,8 @@ h1. bruin-training
 
 A simple training app for Daily Bruin trainees, using campaign contribution data from the 2012 L.A. Mayoral race.
 
+!bubbles.png()!
+
 h2. TODO:
 
 [ ] client-side data toggling w/ angular
